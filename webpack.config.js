@@ -3,12 +3,11 @@ const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
     entry: {
-        cart: './src/cart/main.js',
-        form: './src/form/main.js',
+        cart: ['./src/cart/main.js', './src/cart/styles.scss'],
+        form: ['./src/form/main.js', './src/form/styles.scss'],
     },
     watch: true,
     output: {
@@ -32,17 +31,14 @@ module.exports = {
                 exclude: [/node_modules/, path.resolve(__dirname, 'server.js'), path.resolve(__dirname, 'getRates.js')],
             },
             {
-                test: /\.s[ac]ss$/i,
+                test: /\.scss$/,
                 use: [
-                    // fallback to style-loader in development
-                    process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'sass-loader',
-                ],
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    'sass-loader?sourceMap'
+                ]
             },
             {
-                // Loads the javacript into html template provided.
-                // Entry point is set below in HtmlWebPackPlugin in Plugins
                 test: /\.html$/,
                 use: [{ loader: 'html-loader' }],
             },
@@ -66,10 +62,8 @@ module.exports = {
             excludeChunks: ['server'],
         }),
         new MiniCssExtractPlugin({
-            // Options similar to the same options in webpackOptions.output
-            // both options are optional
-            filename: '[name].css',
-            chunkFilename: '[id].css',
-        }),
+            filename: "[name].[contenthash].css",
+            chunkFilename: "[id].[contenthash].css"
+        })
     ],
 };

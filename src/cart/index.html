@@ -6,12 +6,46 @@
     <title>Корзина</title>
 </head>
 <body>
-    <select name="currency" id="currency">
-        <option value="RUB">rubles</option>
-        <option value="EUR">euros</option>
-        <option value="USD" selected>US dollars</option>
-        <option value="GBR">pounds</option>
-        <option value="JPY">yens</option>
-    </select>
+    <div class="cart">
+
+        <ul class="cart__list">
+            <li class="cart__list-item">
+                <h3 class="cart__list-item-name">Item 1</h3>
+                <div 
+                    data-item-count="1"
+                    data-item-basePrice="20"
+                    class="cart__list-item-price">20 $</div>
+            </li>
+            <li class="cart__list-item">
+                <h3 class="cart__list-item-name">Item 2</h3>
+                <div 
+                    data-item-count="2"
+                    data-item-basePrice="45"
+                    class="cart__list-item-price">45 $</div>
+            </li>
+            <li class="cart__list-item">
+                <h3 class="cart__list-item-name">Item 3</h3>
+                <div 
+                    data-item-count="3"
+                    data-item-basePrice="67"
+                    class="cart__list-item-price">67 $</div>
+            </li>
+            <li class="cart__list-item">
+                <h3 class="cart__list-item-name">Item 4</h3>
+                <div
+                    data-item-count="4"
+                    data-item-basePrice="1305"
+                    class="cart__list-item-price">1305 $</div>
+            </li>
+            <li class="cart__list-item">
+                <h3>TOTAL PRICE:</h3>
+                <div class="cart__list-item-total-price">
+                    <div class="cssload-container">
+                        <div class="cssload-speeding-wheel"></div>
+                        </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>

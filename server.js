@@ -4,6 +4,8 @@ const app = express(),
     DIST_DIR = __dirname,
     HTML_FILE = path.join(DIST_DIR, 'index.html');
 
+app.use(express.json())
+
 const { getRates } = require('./getRates');
 app.use(express.static(DIST_DIR));
 const PORT = process.env.PORT || 8080;
@@ -18,7 +20,7 @@ app.get('*', (req, res) => {
     res.sendFile(HTML_FILE);
 });
 app.post('/api/rates', async (req, res, next) => {
-    const rates = await getRates();
+    const rates = await getRates(req);
     res.json(rates);
 });
 
