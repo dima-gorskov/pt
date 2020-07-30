@@ -9,10 +9,9 @@ module.exports = {
         cart: ['./src/cart/main.js', './src/cart/styles.scss'],
         form: ['./src/form/main.js', './src/form/styles.scss'],
     },
-    watch: true,
     output: {
         path: path.resolve(__dirname, 'dist'),
-        publicPath: 'http://localhost:8080/dist/',
+        publicPath: '/dist/',
         filename: '[name].[hash:20].bunle.js',
     },
     target: 'node',
@@ -28,7 +27,7 @@ module.exports = {
             {
                 // Transpiles ES6-8 into ES5
                 test: /\.js$/,
-                exclude: [/node_modules/, path.resolve(__dirname, 'server.js'), path.resolve(__dirname, 'getRates.js')],
+                exclude: [/node_modules/, path.resolve(__dirname, 'app.js'), path.resolve(__dirname, 'getRates.js')],
             },
             {
                 test: /\.scss$/,

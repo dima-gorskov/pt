@@ -5,7 +5,7 @@
     "main": "main.js",
     "scripts": {
         "build": "rm -rf dist && webpack --mode development",
-        "start": "node ./server.js",
+        "start": "node app.js",
         "dev": "npm run build && npm run start"
     },
     "keywords": [],

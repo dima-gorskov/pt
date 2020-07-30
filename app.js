@@ -4,11 +4,11 @@ const app = express(),
     DIST_DIR = __dirname,
     HTML_FILE = path.join(DIST_DIR, 'index.html');
 
-app.use(express.json())
+app.use(express.json());
 
 const { getRates } = require('./getRates');
 app.use(express.static(DIST_DIR));
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 app.get('/cart', (req, res) => {
     res.sendFile(path.join(DIST_DIR, '/dist/cart.html'));
